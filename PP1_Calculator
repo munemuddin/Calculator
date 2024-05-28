@@ -1,0 +1,42 @@
+# define a calculator function
+def calculator():
+    # initiate infinite loop as long as user chooses to continue running
+    while True:
+        #initiate try statement to handle error exceptions
+        try:
+            # series of inputs 
+            a = float(input('Enter a number: '))
+           
+            b = input('Enter an operation:(+ * - /)')
+           
+            c = float(input('Enter another number: '))
+
+            
+            #assigning the appropriate operations to a and c based on user input of 'b'
+            if b == '+':
+                result = a + c
+            elif b == '-':
+                result = a - c
+            elif b == '*':
+                result = a * c
+            elif b == '/':
+                #error handling a number divided by zero
+                if c == 0:
+                    raise ZeroDivisionError('Error: Div. by zero')
+                result = a / c
+            #raise an error for all other inputs
+            else:
+                raise ValueError('Error: Invalid input')
+            #print the result
+            print('Result: ', result)
+
+        except ZeroDivisionError as e:
+            print(e)
+        except ValueError as e:
+            print(e)
+        #ask the user if they want to run the program again
+        restart = input('Do you want to restart?: ')
+        if restart.lower == 'no':
+            #if not, end the program
+            break
+calculator()
